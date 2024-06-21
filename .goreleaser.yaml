@@ -48,7 +48,16 @@ nfpms:
 
 
 signs:
-  - artifacts: checksum
+  - artifacts: all
+    args:
+        [
+          "-u",
+          "renekuhn@posteo.de",
+          "--output",
+          "${signature}",
+          "--detach-sign",
+          "${artifact}",
+        ]
 
   
 
