@@ -46,21 +46,18 @@ nfpms:
       - deb
       - rpm
 
-
 signs:
-  - artifacts: all
+  - cmd: cosign
+    stdin: "{{ .Env.COSIGN_PASSWORD }}"
     args:
-        [
-          "-u",
-          "renekuhn@posteo.de",
-          "--output",
-          "${signature}",
-          "--detach-sign",
-          "${artifact}",
-        ]
+      - "sign-blob"
+      - "--key=cosign.key"
+      - "--output-signature=${signature}"
+      - "${artifact}"
+      - "--yes" # needed on cosign 2.0.0+
+    artifacts: all
 
-  
-
+    
 changelog:
   sort: asc
   filters:

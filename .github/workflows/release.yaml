@@ -35,7 +35,9 @@ jobs:
           gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
           passphrase: ${{ secrets.GPG_PASSPHRASE }}
 
-      
+      - name: install cosign 
+        run: go install github.com/sigstore/cosign/v2/cmd/cosign@latest
+        
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v6
         with:
@@ -49,3 +51,5 @@ jobs:
           # Your GoReleaser Pro key, if you are using the 'goreleaser-pro' distribution
           # GORELEASER_KEY: ${{ secrets.GORELEASER_KEY }}
           GPG_FINGERPRINT: ${{ steps.import_gpg.outputs.fingerprint }}
+          COSIGN_PASSWORD: ${{ secrets.COSIGN_PASSWORD}}
+          
