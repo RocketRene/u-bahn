@@ -36,6 +36,9 @@ archives:
       - goos: windows
         format: zip
 
+    files: 
+      - cosign.pub
+
 
 nfpms:
   - maintainer: Rene Kuhn
