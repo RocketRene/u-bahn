@@ -47,7 +47,7 @@ archives:
         format: zip
 
     files: 
-      - glob: ./cosign.pub
+    - ./cosign.pub
 
 
 nfpms:
