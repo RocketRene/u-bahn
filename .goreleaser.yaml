@@ -27,8 +27,10 @@ release:
     name: u-bahn
 
   extra_files:
-    -  cosign.pub
-
+    - glob: "./cosign.pub"
+      # Optionally, specify the destination filename at release
+      # If you omit this, it defaults to the base name of the file
+      name_template: "cosign.pub"
 archives:
   - format: tar.gz
     # this name template makes the OS and Arch compatible with the results of `uname`.
