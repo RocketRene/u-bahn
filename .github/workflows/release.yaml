@@ -53,3 +53,24 @@ jobs:
           GPG_FINGERPRINT: ${{ steps.import_gpg.outputs.fingerprint }}
           COSIGN_PASSWORD: ${{ secrets.COSIGN_PASSWORD}}
           
+      - name: Locate checksum file
+        id: find_checksum
+        run: |
+          if [ -z "$(ls dist/*checksum*.txt)" ]; then
+            echo "Error: Checksum file not found."
+            exit 1
+          fi
+          echo "CHECKSUM_FILE=$(ls dist/*checksum*.txt)" >> $GITHUB_ENV
+
+      - name: Locate signature file
+        id: find_signature
+        run: |
+          if [ -z "$(ls dist/*checksum*.txt.sig)" ]; then
+            echo "Error: Signature file not found."
+            exit 1
+          fi
+          echo "SIGNATURE_FILE=$(ls dist/*checksum*.txt.sig)" >> $GITHUB_ENV
+
+      - name: Verify checksums with cosign
+        run: |
+          cosign verify-blob --key cosign.pub --signature ${{ env.SIGNATURE_FILE }} ${{ env.CHECKSUM_FILE }}
