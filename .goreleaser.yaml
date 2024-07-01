@@ -27,7 +27,7 @@ release:
     name: u-bahn
 
   extra_files:
-    - cosign.pub
+    -  cosign.pub
 
 archives:
   - format: tar.gz
@@ -45,7 +45,7 @@ archives:
         format: zip
 
     files: 
-      - cosign.pub
+      - glob: ./cosign.pub
 
 
 nfpms:
