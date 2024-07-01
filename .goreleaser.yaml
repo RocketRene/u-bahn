@@ -21,6 +21,14 @@ builds:
       - windows
       - darwin
 
+release:
+  github:
+    owner: RocketRene
+    name: u-bahn
+
+  extra_files:
+    - cosign.pub
+
 archives:
   - format: tar.gz
     # this name template makes the OS and Arch compatible with the results of `uname`.
