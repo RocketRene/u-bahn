@@ -6,5 +6,5 @@ import (
 
 func main() {
 	fmt.Println("Hopefully this will become my Subway Assistant for Berlin")
-	fmt.Println("Lets see ;)")
+	fmt.Println("Lets see ;-)")
 }
