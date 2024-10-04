@@ -48,11 +48,10 @@ jobs:
           args: release --clean
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # Your GoReleaser Pro key, if you are using the 'goreleaser-pro' distribution
-          # GORELEASER_KEY: ${{ secrets.GORELEASER_KEY }}
           GPG_FINGERPRINT: ${{ steps.import_gpg.outputs.fingerprint }}
           COSIGN_PASSWORD: ${{ secrets.COSIGN_PASSWORD}}
-          
+          FURY_TOKEN: ${{ secrets.FURY_TOKEN }}         
+
       - name: Locate checksum file
         id: find_checksum
         run: |
