@@ -51,7 +51,8 @@ archives:
 
 
 nfpms:
-  - maintainer: Rene Kuhn
+  - id: packages
+    maintainer: Rene Kuhn
     description: An API for the BVG Berlin Subway Schedule
     homepage: https://github.com/RocketRene/u-bahn
     license: GNU General Public License v3.0
@@ -77,3 +78,12 @@ changelog:
     exclude:
       - "^docs:"
       - "^test:"
+
+
+publishers:
+  - name: fury.io
+    ids:
+      - packages
+    dir: "{{ dir .ArtifactPath }}"
+    cmd: curl -F package=@{{ .ArtifactName }} https://{{ .Env.FURY_TOKEN }}@push.fury.io/rocketrene/
+      
