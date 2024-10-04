@@ -5,6 +5,6 @@ import (
 )
 
 func main() {
-	fmt.Println("Hopefully this will become my Subway Assistant for Berlin")
+	fmt.Println("Hopefully this will become my S-Bahn Assistant for HPI")
 	fmt.Println("Lets see ;-)")
 }
